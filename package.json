@@ -1,0 +1,28 @@
+{
+  "name": "assignmentlikho",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "node api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.2",
+    "memorystore": "^1.6.7",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.7.0",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "serverless-http": "^3.2.0",
+    "socket.io": "^4.8.1"
+  }
+}

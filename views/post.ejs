@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post Assignment</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+     color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+ 
+<body class="page-light">
+   <%- include('partials/header') %>
+  <div id="posts" class="container">
+    <div class="form-container">
+      <div class="form-title">Post Assignment</div>
+      <form action="/assignments" method="POST" enctype="multipart/form-data">
+        <div class="form-group" id="postass">
+          <label class="form-label">Title</label>
+          <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="form-group" id="postass">
+          <label class="form-label">Subject</label>
+          <select name="subject" class="form-control" id="subjectSelect" required>
+            <option value="">Select Subject</option>
+            <option>Math</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+            <option>Biology</option>
+            <option>Os</option>
+            <option>Dbms</option>
+            <option>Cn</option>
+            <option>English</option>
+            <option>Other</option>
+          </select>
+          <input type="text" name="customSubject" id="customSubjectInput" class="form-control" placeholder="Enter subject" style="display:none;margin-top:0.5rem;">
+        </div>
+        <div class="form-group" id="postass">
+          <label class="form-label">Deadline</label>
+          <input type="date" name="deadline" class="form-control" required>
+        </div>
+        <!--
+        <div class="form-group">
+          <label class="form-label">Budget</label>
+          <input type="number" name="budget" class="form-control" required>
+        </div>
+        -->
+        <div class="form-group" id="postass">
+          <label class="form-label">Address</label>
+          <textarea name="description" class="form-control" required></textarea>
+        </div>
+        
+        <div class="form-group" id="postass">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" name="phone" class="form-control" required pattern="[0-9]{10,15}" title="Enter a valid phone number">
+        </div>
+        
+        <div class="form-group" id="postass">
+          <label class="form-label">Attachments(what do you want to write)</label>
+          <input type="file" name="attachment" class="form-control">
+        </div>
+        <div class="form-group" id="postass">
+          <label for="comments">Comments (optional):</label>
+          <textarea id="comments" name="comments" rows="3" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="form-btn">Upload</button>
+      </form>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (hamburger && navLinks) {
+        hamburger.onclick = () => navLinks.classList.toggle('open');
+        navLinks.querySelectorAll('a').forEach(link => {
+          link.onclick = () => navLinks.classList.remove('open');
+        });
+      }
+      const subjectSelect = document.getElementById('subjectSelect');
+      const customInput = document.getElementById('customSubjectInput');
+      if(subjectSelect && customInput) {
+        subjectSelect.addEventListener('change', function() {
+          if(this.value === 'Other') {
+            customInput.style.display = 'block';
+            customInput.required = true;
+          } else {
+            customInput.style.display = 'none';
+            customInput.required = false;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

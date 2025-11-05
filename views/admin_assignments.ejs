@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - Assignments</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">Assignmentlikho</div>
+        <div class="nav-links" id="navLinks">
+          <a href="/">Home</a>
+          <% if (user) { %>
+            <a href="/post">Post Assignment</a>
+            <a href="/profile">Profile</a>
+            <% if (user.isAdmin) { %>
+              <a href="/admin/assignments">Admin</a>
+            <% } %>
+            <a href="/logout">Logout</a>
+          <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+          <% } %>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+  <div class="home" style="max-width: 900px;">
+    <h2>All Assignments</h2>
+    <% assignments.forEach(a => { %>
+        <div class="assignment-card">
+          <div>
+            <strong><%= a.title %></strong> (<%= a.subject %>)<br>
+            <small>By: <%= a.postedBy ? a.postedBy.name : 'Unknown' %> | Status: <span style="font-weight:bold;color:<%= a.status === 'accepted' ? 'green' : (a.status === 'rejected' ? 'red' : '#888') %>;"><%= a.status.charAt(0).toUpperCase() + a.status.slice(1) %></span></small><br>
+            <small>Phone: <%= a.phone ? a.phone : 'N/A' %></small>
+          </div>
+          <div>
+            <form action="/admin/assignments/<%= a._id %>/accept" method="POST" style="display:inline;">
+              <button class="btn btn-primary" type="submit">Accept</button>
+            </form>
+            <form action="/admin/assignments/<%= a._id %>/reject" method="POST" style="display:inline;">
+              <button class="btn btn-light" type="submit">Reject</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+  </div>
+  <%- include('partials/footer') %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      if (hamburger && navLinks) {
+        hamburger.onclick = () => navLinks.classList.toggle('open');
+        navLinks.querySelectorAll('a').forEach(link => {
+          link.onclick = () => navLinks.classList.remove('open');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

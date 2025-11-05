@@ -1,0 +1,89 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writehubs</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- ✅ Add Tailwind CSS -->
+
+ <!-- Navbar -->
+  <header class="bg-[#0f172a] text-white fixed w-full z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="text-2xl font-bold">Write<span class="text-[#38bdf8]">hubs</span></div>
+
+
+     <!-- Hamburger -->
+      <div id="hamburger" class="md:hidden flex flex-col gap-1 cursor-pointer">
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+      </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-6 items-center">
+      <a href="/" class="hover:text-[#38bdf8]">Home</a>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/post" class="hover:text-[#38bdf8]">Post Assignment</a>
+        <a href="/profile" class="hover:text-[#38bdf8]">Profile</a>
+        <% if (user.isAdmin) { %>
+          <a href="/admin/assignments" class="hover:text-[#38bdf8]">Admin</a>
+        <% } %>
+        <a href="/logout" class="px-4 py-1 border border-[#38bdf8] text-[#38bdf8] rounded hover:bg-[#38bdf8] hover:text-white transition">Logout</a>
+      <% } else { %>
+        <a href="/login" class="px-4 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition">Login</a>
+        <a href="/signup" class="px-4 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white transition">Sign Up</a>
+      <% } %>
+    </nav>
+  </div>
+
+ <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-[#0f172a] text-white z-40 transform translate-x-full transition-transform duration-300 md:hidden">
+      <div class="flex justify-between items-center px-4 py-4 border-b border-gray-700">
+        <div class="text-xl font-bold">Write<span class="text-[#38bdf8]">hubs</span></div>
+        <button id="menuClose" class="text-3xl text-white">&times;</button>
+      </div>
+
+    <div class="p-6 space-y-6 text-lg">
+      <a href="/" class="block hover:text-[#38bdf8]">Home</a>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <a href="/post" class="block hover:text-[#38bdf8]">Post Assignment</a>
+        <a href="/profile" class="block hover:text-[#38bdf8]">Profile</a>
+        <% if (user.isAdmin) { %>
+          <a href="/admin/assignments" class="block hover:text-[#38bdf8]">Admin</a>
+        <% } %>
+        <a href="/logout" class="block text-center border border-[#38bdf8] text-[#38bdf8] py-2 rounded hover:bg-[#38bdf8] hover:text-white">Logout</a>
+      <% } else { %>
+        <a href="/login" class="block text-center border border-[#38bdf8] text-[#38bdf8] py-2 rounded hover:bg-[#38bdf8] hover:text-white">Login</a>
+        <a href="/signup" class="block text-center border border-[#38bdf8] text-[#38bdf8] py-2 rounded hover:bg-[#38bdf8] hover:text-white">Sign Up</a>
+      <% } %>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ Push Content Down so Header Doesn’t Overlap -->
+<div class="h-[70px] md:h-[75px]"></div>
+
+<!-- ✅ Script -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.remove('translate-x-full');
+  });
+
+  menuClose.addEventListener('click', () => {
+    mobileMenu.classList.add('translate-x-full');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writehubs - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <div class="dark-wrapper mt-[-20px]">
+            <div class="container">
+                <section class="hero">
+                    <h1>Need your assignment done?<br>Let others handle it</h1>
+                    <div class="hero-buttons">
+                        <a href="/post" class="btn purchase-btn">Post Assignment</a>
+                        <a href="#" class="btn watch-video-btn"></a>
+                    </div>
+                </section>
+
+                <div class="how-it-works">
+                    <div class="how-it-works-item">
+                        <span>📝</span>
+                        <h3>Post Request</h3>
+                        <p>Post an assignment request</p>
+                    </div>
+                    <div class="how-it-works-item">
+                        <span>✔️</span>
+                        <h3>Get Written</h3>
+                        <p>Get your assignment written</p>
+                    </div>
+                    <div class="how-it-works-item">
+                        <span>₹</span>
+                        <h3>Pay</h3>
+                        <p>Pay for the Work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="light-wrapper">
+            <div class="container">
+                <section class="assignments-list">
+                    <div class="section-header">
+                        <h2>Posted <span>Assignments</span></h2>
+                    </div>
+                    <div class="product-grid">
+                        <% if (assignments.length === 0) { %>
+                            <div>No assignments posted yet.</div>
+                        <% } %>
+                        <% assignments.forEach(a => { %>
+                            <div class="assignment-card" onclick="window.location='/profile/<%= a.postedBy ? a.postedBy._id : '' %>'" style="cursor:pointer">
+                                <div class="assignment-header">
+                                    <% if (a.postedBy && a.postedBy.profileImage) { %>
+                                        <img src="/<%= a.postedBy.profileImage.replace(/^\/+/, '') %>" class="profile-img-sm" alt="Profile">
+                                    <% } else { %>
+                                        <div class="profile-initial-sm">
+                                            <%= (a.postedBy && a.postedBy.name && a.postedBy.name.length > 0) ? a.postedBy.name.charAt(0).toUpperCase() : 'U' %>
+                                        </div>
+                                    <% } %>
+                                    <div class="profile-name">
+                                        <%= (a.postedBy && a.postedBy.name) ? a.postedBy.name : 'Anonymous' %>
+                                    </div>
+
+                                </div>
+                                <div class="assignment-info">
+                                    <div><%= (a.subject === 'Other' && a.customSubject) ? a.customSubject : a.subject %></div>
+                                    <div><%= a.title %></div>
+                                    <% if (user && user.isAdmin) { %>
+                                        <div><%= a.description %></div>
+                                    <% } %>
+                                    <% if (a.attachment) { %>
+                                        <a class="attach" href="/uploads/<%= a.attachment %>" target="_blank" onclick="event.stopPropagation();">View File</a>
+                                    <% } %>
+                                </div>
+                                <div class="assignment-meta">
+                                    <div>
+                                        <span>Due in <%= Math.ceil((new Date(a.deadline) - new Date())/(1000*60*60*24)) %> days</span>
+                                        <div class="assignment-date">
+                                            Posted on: <%= a.createdAt ? new Date(a.createdAt).toLocaleDateString() : '' %>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <!--
+                                        <div class="budget">₹<%= a.budget %></div>
+                                        -->
+                                        <% if (a.status === 'accepted') { %>
+                                            <span class="status-tag accepted">Accepted</span>
+                                        <% } else if (a.status === 'rejected') { %>
+                                            <span class="status-tag rejected">Rejected</span>
+                                        <% } else { %>
+                                            <span class="status-tag pending">Pending</span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </section>
+            </div>
+            
+        </div>
+    </main>
+
+    <a href="https://wa.me/917719323594?text=Hi%20there!%20I%20want%20to%20know%20more%20about%20your%20services" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp fa-3x"></i>
+    </a>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger && navLinks) {
+            hamburger.onclick = () => navLinks.classList.toggle('open');
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.onclick = () => navLinks.classList.remove('open');
+            });
+        }
+    });
+    </script>
+    <%- include('partials/footer') %>
+</body>
+
+</html>
+

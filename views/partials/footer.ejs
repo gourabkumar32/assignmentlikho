@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Footer Clone</title>
+  <!-- Tailwind CSS via CDN -->
+   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+ <style>
+    .footer-link:hover {
+      color: #00c6ff;
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+    footer{
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+
+    .social-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .fade-in {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      footer{
+      margin-bottom: 0 ;
+    }
+    }
+      
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10 px-5 md:px-20 fade-in">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Company Info -->
+      <div>
+        <h2 class="text-2xl font-bold text-[#c77dff] mb-4">Writehubs</h2>
+        <p class="text-gray-400">
+          Creating seamless web experiences with elegance and performance.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xl font-semibold text-[#c77dff] mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="footer-link text-gray-400 block">Home</a></li>
+          <li><a href="/aboutus.html" class="footer-link text-gray-400 block">About Us</a></li>
+          <li><a href="#" class="footer-link text-gray-400 block">Services</a></li>
+          <li><a href="/contactus.html" class="footer-link text-gray-400 block">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div>
+        <h3 class="text-xl font-semibold text-[#c77dff] mb-4">Contact Us</h3>
+        <p class="text-gray-400">Email: info@writehubs.com</p>
+        <p class="text-gray-400">Phone: +91-9470016496</p>
+
+        <div class="flex space-x-4 mt-4">
+         <!-- <a href="#" class="social-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+         
+          <a href="#" class="social-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-linkedin-in"></i></a>-->
+           <a href="#" class="social-icon text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
+      © 2025 writehubs. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
+
+

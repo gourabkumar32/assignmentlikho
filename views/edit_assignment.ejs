@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Assignment</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="page-light">
+    <%- include('partials/header') %>
+  <div class="container">
+    <div class="form-container">
+      <div class="form-title">Edit Assignment</div>
+      <form action="/assignments/<%= assignment._id %>/edit" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label class="form-label">Title</label>
+          <input type="text" name="title" class="form-control" required value="<%= assignment.title %>">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" name="subject" class="form-control" required value="<%= assignment.subject %>">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Custom Subject</label>
+          <input type="text" name="customSubject" class="form-control" value="<%= assignment.customSubject %>">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Deadline</label>
+          <input type="date" name="deadline" class="form-control" required value="<%= assignment.deadline ? assignment.deadline.toISOString().split('T')[0] : '' %>">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Address</label>
+          <textarea name="description" class="form-control" required><%= assignment.description %></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" name="phone" class="form-control" required pattern="[0-9]{10,15}" title="Enter a valid phone number" value="<%= assignment.phone %>">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Attachments (what do you want to write)</label>
+          <% if (assignment.attachment) { %>
+            <div style="margin-bottom: 0.5em;">
+              <a href="/uploads/<%= assignment.attachment %>" target="_blank">Current File</a>
+            </div>
+          <% } %>
+          <input type="file" name="attachment" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments (optional):</label>
+          <textarea id="comments" name="comments" rows="3" class="form-control"><%= assignment.comments %></textarea>
+        </div>
+        <button type="submit" class="form-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+</body>
+</html> 

@@ -1,0 +1,48 @@
+@media (max-width: 768px) {
+    .header-content .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #1c1a3a;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+        z-index: 1000;
+    }
+    .page-light .header-content .nav-links {
+        background: #ffffff;
+    }
+    .header-content .nav-links.open {
+        display: flex;
+    }
+    .hamburger {
+        display: flex !important;
+    }
+    .home {
+        padding: 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        padding: 0 1rem;
+        align-items: center;
+    }
+    .hero-buttons .btn {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    .how-it-works {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 2rem 1rem;
+    }
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+} 

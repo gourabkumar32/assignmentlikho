@@ -1,0 +1,63 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | AssignMate</title>
+  <link rel="stylesheet" href="style.css"> <!-- Use this for local Tailwind -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>body { font-family: 'Inter', sans-serif; }
+    footer>p{
+  margin-bottom: 1px;
+  margin-right: 1px;
+  
+}
+footer{
+  margin-top: 100px;
+}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">AssignMate</h1>
+      <div class="space-x-4">
+        <a href="/" class="hover:text-blue-600 text-gray-600 font-medium">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Us Section -->
+  <section class="max-w-6xl mx-auto py-16 px-4">
+    <h2 class="text-4xl font-bold text-center text-blue-700 mb-6">Who We Are</h2>
+    <p class="text-lg text-center text-gray-700 max-w-3xl mx-auto mb-12">
+      AssignMate is a next-gen assignment submission platform built to streamline the academic workflow. We bridge the gap between students and instructors by making submission, tracking, and grading simple, fast, and intuitive.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">🎯 Our Mission</h3>
+        <p class="text-gray-600">To simplify academic submissions and empower students and educators with reliable and intelligent tools.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">🚀 Our Vision</h3>
+        <p class="text-gray-600">To become the most trusted digital academic assistant that drives learning efficiency across institutions globally.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
+        <h3 class="text-xl font-semibold text-blue-600 mb-2">👥 Our Values</h3>
+        <p class="text-gray-600">Innovation, transparency, and a student-first approach guide every decision we make.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2025 AssignMate. All rights reserved.</p>
+  </footer>
+  <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
